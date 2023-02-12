@@ -7,13 +7,14 @@ ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://algae:p0stgres@localhost/Essay"
 db = SQLAlchemy(app)
 
 
 class Essay(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(200), nullable=False, unique=True)
     essay = db.Column(db.String, nullable=False)
     switchTabs = db.Column(db.Integer)
     copyPaste = db.Column(db.Integer)
