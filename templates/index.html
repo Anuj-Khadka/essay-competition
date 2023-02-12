@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Essay Competition</title>
+{% endblock title %}
+
+{% block body %}
+    <div class="container mt-5" id="container">
+      <h1 class="mb-3">Essay Writing Competition Demo</h1>
+      <div class="text-end mb-3">
+        <span id="wordCount" class="me-3">Word Count: 0</span>
+        <button
+          type="button"
+          class="btn btn-primary d-none"
+          style="width: 100px; height: 40px"
+          id="timer"
+        ></button>
+      </div>
+      <form method="POST" action="/">
+        <div class="mb-3">
+          <label for="email" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            required
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="essayArea" class="form-label">Essay</label>
+          <textarea
+            class="form-control"
+            id="essayArea"
+            rows="3"
+            name="essay"
+            disabled
+            required
+          ></textarea>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label
+            class="form-check-label"
+            for="exampleCheck1"
+            aria-required="true"
+            >I confirm that the essay written above is my own and I have not
+            copied any content from any resource.</label
+          >
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitEssay" disabled>
+          Submit
+        </button>
+        <div id="checkings" class="mt-5 invisible">
+          <div class="mb-3">
+            <label for="switchTab" class="form-label">Switch tabs</label>
+            <input type="number" class="form-control" name="switchTab" id="switchTab" />
+          </div>
+          <div class="mb-3">
+            <label for="copyPaste" class="form-label">Copy Paste</label>
+            <input type="number" class="form-control" name="copyPaste" id="copyPaste" />
+          </div>
+        </div>
+      </form>
+    </div>
+{% endblock body %}

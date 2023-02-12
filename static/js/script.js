@@ -17,19 +17,18 @@ window.addEventListener("blur", (event) => {
         We tried to switch the tab. Information recorded! ${blurCounter}
     </div>
 `;
-  blurCounter++;
+  let switchTabs = document.getElementById("switchTab");
+  switchTabs.value = blurCounter;
   let container = document.getElementById("container");
   container.insertAdjacentHTML("afterbegin", alertMsg);
-//   setInterval(() => {
-//     blurTime++;
-//     console.log(blurTime);
-//   }, 1000);
+  blurCounter++;
 });
 
 // Run myfunc every second
+
 let myfunc = setInterval(function () {
   let now = new Date().getTime();
-  let countDownDate = new Date(`Thu Feb 09 2023 00:45:05`).getTime();
+  let countDownDate = new Date(`Sun Feb 12 2023 15:45:05`).getTime();
   let timeleft = countDownDate - now;
 
   // Calculating the minutes and seconds left
@@ -50,13 +49,14 @@ let myfunc = setInterval(function () {
   }
 }, 1000);
 
-
 essayArea.addEventListener("paste", () => {
   let pasteMsg = `
     <div class="alert alert-secondary" role="alert">
         We tried to paste something. Information recorded! ${pasteCounter}
     </div>
 `;
+  let copyPaste = document.getElementById("copyPaste");
+  copyPaste.value = pasteCounter;
   pasteCounter++;
   let container = document.getElementById("container");
   container.insertAdjacentHTML("afterbegin", pasteMsg);
@@ -73,9 +73,8 @@ submitEssay.addEventListener("submit", (event) => {
   container.insertAdjacentHTML("afterbegin", submitMsg);
 });
 
-
 // word count
 essayArea.addEventListener("input", function () {
   var words = essayArea.value.split(/\s+/);
-  wordCount.innerHTML = words.length;
+  wordCount.innerHTML = `Word Count: ${words.length - 1}`;
 });
