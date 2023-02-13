@@ -7,8 +7,7 @@ ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 app = Flask(__name__)
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://dvzejjlm:ENSDIAKVKiG70lcYftGsKUyyVfEnYKTC@tiny.db.elephantsql.com/dvzejjlm"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
 db = SQLAlchemy(app)
 
 
@@ -18,7 +17,8 @@ class Essay(db.Model):
     essay = db.Column(db.String, nullable=False)
     switchTabs = db.Column(db.Integer)
     copyPaste = db.Column(db.Integer)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    submitTime = db.Column(db.String)
+    date = db.Column(db.DateTime, default=datetime.now())
 
     def __repr__(self) -> str:
         return f'{self.id} - {self.text}'
@@ -31,8 +31,9 @@ def index():
         essay = request.form['essay']
         switchTabs = request.form['switchTab']
         copyPaste = request.form['copyPaste']
+        submitTime = request.form['submitTime']
         new_essay = Essay(email=email, essay=essay,
-                          switchTabs=switchTabs, copyPaste=copyPaste)
+                          switchTabs=switchTabs, copyPaste=copyPaste, submitTime=submitTime)
 
         try:
             db.session.add(new_essay)

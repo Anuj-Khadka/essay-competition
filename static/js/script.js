@@ -14,7 +14,7 @@ window.addEventListener("blur", (event) => {
   console.log(date);
   let alertMsg = `
     <div class="alert alert-secondary" role="alert">
-        We tried to switch the tab. Information recorded! ${blurCounter}
+        You tried to switch the tab. Information recorded! ${blurCounter}
     </div>
 `;
   let switchTabs = document.getElementById("switchTab");
@@ -52,7 +52,7 @@ let myfunc = setInterval(function () {
 essayArea.addEventListener("paste", () => {
   let pasteMsg = `
     <div class="alert alert-secondary" role="alert">
-        We tried to paste something. Information recorded! ${pasteCounter}
+        You tried to paste something. Information recorded! ${pasteCounter}
     </div>
 `;
   let copyPaste = document.getElementById("copyPaste");
@@ -71,6 +71,9 @@ submitEssay.addEventListener("submit", (event) => {
 `;
   let container = document.getElementById("container");
   container.insertAdjacentHTML("afterbegin", submitMsg);
+  let date = new Date;
+  let submitTime = document.getElementById('submitTime')
+  submitTime.value = date.toString();
 });
 
 // word count
