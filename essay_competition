@@ -1,0 +1,243 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+-- Started on 2023-02-13 12:21:56 +0545
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE algae;
+ALTER ROLE algae WITH SUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:pDg47pSq7R6NZM2+x3T+AQ==$+9JK6SsUBhReFE9Iw2HQAnipzx1aENRw9KDJ24QrxKQ=:pGDwFaTHuj8krvFf6UpqH5sBTgcx6W+qutiOSThGKKE=';
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS;
+
+
+
+
+
+
+--
+-- Databases
+--
+
+--
+-- Database "template1" dump
+--
+
+\connect template1
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+
+-- Started on 2023-02-13 12:21:57 +0545
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2023-02-13 12:21:59 +0545
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "Essay" dump
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+
+-- Started on 2023-02-13 12:21:59 +0545
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3360 (class 1262 OID 16385)
+-- Name: Essay; Type: DATABASE; Schema: -; Owner: algae
+--
+
+CREATE DATABASE "Essay" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
+
+
+ALTER DATABASE "Essay" OWNER TO algae;
+
+\connect "Essay"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 210 (class 1259 OID 16387)
+-- Name: essay; Type: TABLE; Schema: public; Owner: algae
+--
+
+CREATE TABLE public.essay (
+    id integer NOT NULL,
+    email character varying(200) NOT NULL,
+    essay character varying NOT NULL,
+    "switchTabs" integer,
+    "copyPaste" integer,
+    date timestamp without time zone
+);
+
+
+ALTER TABLE public.essay OWNER TO algae;
+
+--
+-- TOC entry 209 (class 1259 OID 16386)
+-- Name: essay_id_seq; Type: SEQUENCE; Schema: public; Owner: algae
+--
+
+CREATE SEQUENCE public.essay_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.essay_id_seq OWNER TO algae;
+
+--
+-- TOC entry 3361 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: essay_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: algae
+--
+
+ALTER SEQUENCE public.essay_id_seq OWNED BY public.essay.id;
+
+
+--
+-- TOC entry 3209 (class 2604 OID 16390)
+-- Name: essay id; Type: DEFAULT; Schema: public; Owner: algae
+--
+
+ALTER TABLE ONLY public.essay ALTER COLUMN id SET DEFAULT nextval('public.essay_id_seq'::regclass);
+
+
+--
+-- TOC entry 3354 (class 0 OID 16387)
+-- Dependencies: 210
+-- Data for Name: essay; Type: TABLE DATA; Schema: public; Owner: algae
+--
+
+COPY public.essay (id, email, essay, "switchTabs", "copyPaste", date) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3362 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: essay_id_seq; Type: SEQUENCE SET; Schema: public; Owner: algae
+--
+
+SELECT pg_catalog.setval('public.essay_id_seq', 1, false);
+
+
+--
+-- TOC entry 3211 (class 2606 OID 16396)
+-- Name: essay essay_email_key; Type: CONSTRAINT; Schema: public; Owner: algae
+--
+
+ALTER TABLE ONLY public.essay
+    ADD CONSTRAINT essay_email_key UNIQUE (email);
+
+
+--
+-- TOC entry 3213 (class 2606 OID 16394)
+-- Name: essay essay_pkey; Type: CONSTRAINT; Schema: public; Owner: algae
+--
+
+ALTER TABLE ONLY public.essay
+    ADD CONSTRAINT essay_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2023-02-13 12:22:00 +0545
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "postgres" dump
+--
+
+\connect postgres
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+
+-- Started on 2023-02-13 12:22:00 +0545
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2023-02-13 12:22:02 +0545
+
+--
+-- PostgreSQL database dump complete
+--
+
+-- Completed on 2023-02-13 12:22:02 +0545
+
+--
+-- PostgreSQL database cluster dump complete
+--
+
