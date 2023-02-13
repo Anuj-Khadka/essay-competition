@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 app = Flask(__name__)
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://algae:p0stgres@localhost/Essay"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://dvzejjlm:ENSDIAKVKiG70lcYftGsKUyyVfEnYKTC@tiny.db.elephantsql.com/dvzejjlm"
 db = SQLAlchemy(app)
 
 

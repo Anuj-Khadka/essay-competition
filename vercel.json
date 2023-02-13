@@ -7,10 +7,15 @@
       "config": { "runtime": "python3.9" }
     }
   ],
+  "env": {
+    "DATABASE_URL": "postgres://dvzejjlm:ENSDIAKVKiG70lcYftGsKUyyVfEnYKTC@tiny.db.elephantsql.com/dvzejjlm"
+  },
   "routes": [
+    { "handle": "filesystem" },
     {
       "src": "/(.*)",
-      "dest": "app.py"
+      "dest": "/app.py"
     }
   ]
 }
+
