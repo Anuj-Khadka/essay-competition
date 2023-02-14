@@ -28,7 +28,7 @@ window.addEventListener("blur", (event) => {
 
 let myfunc = setInterval(function () {
   let now = new Date().getTime();
-  let countDownDate = new Date(`Sun Feb 12 2023 15:45:05`).getTime();
+  let countDownDate = new Date(`Mon Feb 13 2023 20:10:05`).getTime();
   let timeleft = countDownDate - now;
 
   // Calculating the minutes and seconds left
